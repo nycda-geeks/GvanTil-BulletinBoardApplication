@@ -7,6 +7,8 @@ var express = require ('express')
 
 var app = express()
 
+app.use(express.static('./resources/'));
+
 // View engine = PUG
 app.set('view engine', 'pug');
 app.set('views', './views'); 
@@ -16,8 +18,6 @@ app.get ('/', function (req, res){
 	console.log('received a get request')
 	res.render('index')
 });
-
-
 
 
 // server set up
