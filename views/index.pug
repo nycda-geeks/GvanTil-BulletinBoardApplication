@@ -14,3 +14,12 @@ body
 		h1 BULLETIN BOARD APPLICATION
 			a(href='/') HOME
 			a(href='/') BULLETIN BOARD
+	#form
+		h2 Enter your search query:
+			form(action="/searchresult", method="post")
+				div.input
+					input(type="text", name="title", placeholder="title")
+				div.input
+					input(type="text", name="body" placeholder="body")
+				div.actions
+					input(type="submit", value="Search")
