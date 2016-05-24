@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/nycda-geeks/GvanTil-BulletinBoardApplication/issues"
   },
-  "homepage": "https://github.com/nycda-geeks/GvanTil-BulletinBoardApplication#readme"
+  "homepage": "https://github.com/nycda-geeks/GvanTil-BulletinBoardApplication#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "pg": "^4.5.5"
+  }
 }
