@@ -1,3 +1,15 @@
-h1 {
-	color: green;
+/*NAVIGATION BAR*/
+
+#nav{
+	border-bottom: 2px solid black;
+}
+
+#nav h1{
+	font-size: 40px;
+	margin-left: 20px;
+}
+
+#nav a {
+	font-size: 30px;
+	margin-left:20px;
 }
