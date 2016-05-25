@@ -15,3 +15,8 @@ body
 			a(href='/') HOME
 			a(href='/board') BULLETIN BOARD
 	#messages
+		h2= "There's a total of " + toutLesMessages.length + " messages"
+		each message in toutLesMessages
+			p= "Message number: " + message.id
+			p= "Title: " + message.title
+			p= "Message: " + message.body
