@@ -3,9 +3,12 @@
 //////////////////////////////////////////////////
 
 //requering
-var express = require ('express')
 
+var express = require ('express')
 var app = express()
+var pg = require ('pg')
+var connectionString = 
+
 
 app.use(express.static('./resources/'));
 
@@ -18,6 +21,11 @@ app.get ('/', function (req, res){
 	console.log('received a get request')
 	res.render('index')
 });
+
+app.post ('/submitbulletin', function (req, res){
+	console.log('received a post request')
+
+})
 
 
 // server set up
