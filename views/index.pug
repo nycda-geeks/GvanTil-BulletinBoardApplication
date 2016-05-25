@@ -13,13 +13,16 @@ body
 	#nav 
 		h1 BULLETIN BOARD APPLICATION
 			a(href='/') HOME
-			a(href='/') BULLETIN BOARD
-	#form
-		h2 Enter your search query:
-			form(action="/searchresult", method="post")
-				div.input
-					input(type="text", name="title", placeholder="title")
-				div.input
-					input(type="text", name="body" placeholder="body")
-				div.actions
-					input(type="submit", value="Search")
+			a(href='/') BULLETIN BOARD	
+	.container-fluid.form
+		.row
+			.col-sm-12
+				h2 Want to add something to the bulletin board?
+				form(action="/searchresult", method="post")
+					div.inputtitle
+						input(type="text", name="title", placeholder="title")
+					div.inputbody
+						input(type="text", name="body" placeholder="body")
+					div.actions
+						input(type="submit", value="Search")
+
