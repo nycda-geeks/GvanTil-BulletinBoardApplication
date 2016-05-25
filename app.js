@@ -21,7 +21,7 @@ app.set('views', './views');
 
 
 app.get ('/', function (req, res){
-	console.log('received a get request')
+	console.log('received a get request on /')
 	res.render('index')
 });
 
@@ -50,6 +50,11 @@ app.post ('/submitbulletin', function (req, res){
 	});
 	res.render ('succes')
 });
+
+app.get ('/board', function (req, res){
+	console.log('received a get request on /board')
+	res.render('board')
+})
 
 
 // server set up
