@@ -27,10 +27,12 @@ app.get ('/', function (req, res){
 
 app.post ('/submitbulletin', function (req, res){
 	console.log('received a post request')
+	var userInput = {text: req.body.title, message: req.body.message}
+	console.log(userInput.message)
 	pg.connect(connectionString, function (err, client, done){
-		client.query ('insert into messages (title, body) values (\'Hello World\', \'This is a fifth test message\')', function (err){
+		client.query ('insert into messages (title, body) values ($1, $2)', [userInput.text, userInput.message], function (err){
 			if (err){
-				console.log ('Apparently something went bloody wrong' + err)
+				console.log ('Apparently something went bloody wrong: ' + err)
 			}
 		done();
 		pg.end();
