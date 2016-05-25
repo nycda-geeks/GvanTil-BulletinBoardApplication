@@ -28,15 +28,24 @@ app.get ('/', function (req, res){
 app.post ('/submitbulletin', function (req, res){
 	console.log('received a post request')
 	var userInput = {text: req.body.title, message: req.body.message}
-	console.log(userInput.message)
 	pg.connect(connectionString, function (err, client, done){
+		if (err){
+			if (client){
+				done(client);
+				console.log ('Couldn\'t connect to database' + err)
+			}
+			return;
+		}
 		client.query ('insert into messages (title, body) values ($1, $2)', [userInput.text, userInput.message], function (err){
 			if (err){
-				console.log ('Apparently something went bloody wrong: ' + err)
+				done (client)
+				console.log ('Couldn\'t write message to database: ' + err)
+				return
+			} else{
+				console.log ('a message has been added to the bulletinboard')
+				done();
 			}
-		done();
 		pg.end();
-		console.log ('a message has been added to the bulletinboard')
 		});
 	});
 	res.render ('succes')
