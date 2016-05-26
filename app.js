@@ -12,8 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // requering postgreSQL and creating a connection string to database 'bulletinboard'
 var pg = require ('pg')
-var connectionString = "postgres://pgadmin:pwdaccess@localhost/bulletinboard"
-
+var connectionString = 'postgres://' + process.env.POSTGRES_USER + ':' + process.env.POSTGRES_PASSWORD + '@localhost/bulletinboard'
 
 // View engine = PUG
 app.set('view engine', 'pug');
