@@ -31,48 +31,57 @@ app.post ('/submitbulletin', function (req, res){
 	// Storing user input from form in a variable
 	var userInput = {text: req.body.title, message: req.body.message}
 	// connecting to postgreSQL database
-	// pg.connect(connectionString, function (err, client, done){
-	// 	if (err){
-	// 		if (client){
-	// 			done(client);
-	// 			console.log ('Couldn\'t connect to database' + err)
-	// 		}
-	// 		return;
-	// 	}
-
-	// 	client.query ('insert into messages (title, body) values ($1, $2)', [userInput.text, userInput.message], function (err){
-	// 		if (err){
-	// 			done (client)
-	// 			console.log ('Couldn\'t write message to database: ' + err)
-	// 			return
-	// 		} else{
-	// 			console.log ('a message has been added to the bulletinboard')
-	// 			done();
-	// 		}
-	// 	pg.end();
-	// 	});
-	// });
+	pg.connect(connectionString, function (err, client, done){
+		// error in case connection failed
+		if (err){
+			if (client){
+				done(client);
+				console.log ('Couldn\'t connect to database' + err)
+			}
+			return;
+		}
+		// userinput
+		client.query ('insert into messages (title, body) values ($1, $2)', [userInput.text, userInput.message], function (err){
+			// error in case something went wrong with user input
+			if (err){
+				done (client)
+				console.log ('Couldn\'t write message to database: ' + err)
+				return
+			} else{
+				console.log ('a message has been added to the bulletinboard')
+				done();
+			}
+		// closing connection
+		pg.end();
+		});
+	});
+	// rendering succes.pug
 	res.render ('succes')
 });
 
+// GET request that listens on /board
 app.get ('/board', function (req, res){
 	console.log('received a get request on /board')
+	// connecting to postgreSQL database
 	pg.connect(connectionString, function (err, client, done){
+		//showing all messages
 		client.query('select * from messages', function (err, result){
+			// storing all messages in a variable
 			var allMessages = result.rows
-			console.log (allMessages)
 			if (err){
 				console.log("couldn\'t select everything from messages " + error)
 			} else {
-				done()
+				done();
+				// closing connection
+				pg.end();
+				// rendering 'board'
 				res.render ('board',{
 					toutLesMessages : allMessages
-				})
+				});
 			}
 		})
 	})
 })
-
 
 // server set up
 var server = app.listen(3000, function () { 
