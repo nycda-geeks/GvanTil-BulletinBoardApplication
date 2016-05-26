@@ -14,6 +14,7 @@
 	margin-left:20px;
 }
 
+/*FORM*/
 .row {
 	text-align:center;
 }
@@ -28,7 +29,29 @@ input {
 }
 
 .inputbody{
-	height: 150px;
+	height: 100%;
 	margin-bottom: 20px;
 }
+
+/*REDIRECTING PAGE*/
+#succes h2{
+	text-align:center;
+}
+
+/*BULLETIN BOARD*/
+#messageDisplay{
+	margin-bottom: 10px;
+	width: 60%;
+	text-align:center;
+	display: inline-block;
+}
+
+#messageDisplay td{
+	border: 1px solid black;
+	width:10%
+}
+#messageDisplay #td{
+	width:50%
+}
+
 

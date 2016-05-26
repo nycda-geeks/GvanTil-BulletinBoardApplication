@@ -19,6 +19,18 @@ body
 			.col-sm-12
 				h2= "There's a total of " + toutLesMessages.length + " messages"
 				each message in toutLesMessages
-					p= "Message number: " + message.id
-					p= "Title: " + message.title
-					p= "Message: " + message.body
+					table#messageDisplay
+						tr
+							td 
+								b Message number: 
+							td= message.id
+						tr 
+							
+							td 
+								b Title:
+							td= message.title
+						tr
+							td 
+								b Message:
+							td= message.body
+
