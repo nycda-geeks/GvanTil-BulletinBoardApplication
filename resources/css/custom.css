@@ -1,15 +1,15 @@
 /*NAVIGATION BAR*/
 
-#nav{
+#navbar-fixed{
 	border-bottom: 2px solid black;
 }
 
-#nav h1{
+#navbar-fixed h1{
 	font-size: 40px;
 	margin-left: 20px;
 }
 
-#nav a {
+#navbar-fixed a {
 	font-size: 30px;
 	margin-left:20px;
 }
